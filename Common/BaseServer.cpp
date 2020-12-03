@@ -7,7 +7,7 @@ void BaseServer::do_pending_functions()
     {
         std::lock_guard<std::mutex> lk(m_mutex);
         functors.swap(m_pending_functor);
-    }
+    }//swap让m_pending释放内存
     for (const Functor &functor : functors)
     {
         functor();
